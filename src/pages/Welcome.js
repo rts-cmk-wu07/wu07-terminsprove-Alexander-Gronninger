@@ -5,7 +5,7 @@ const Welcome = () => {
     <>
       <section className="flex flex-col justify-end h-screen bg-[url('./backgrounds/welcome_background.jpg')] bg-cover bg-no-repeat bg-top">
         <div className="mb-10">
-          <h1 className="text-white text-veryBig mb-4 ml-10">
+          <h1 className="text-white text-veryBig mb-4 ml-10 font-arial">
             Believe Yourself
           </h1>
           <div className="flex">
