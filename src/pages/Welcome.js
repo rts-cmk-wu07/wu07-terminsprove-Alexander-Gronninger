@@ -14,7 +14,7 @@ const Welcome = () => {
           </div>
         </div>
         <div className="grid">
-          <div className="flex w-full h-[400px] bg-[url('./backgrounds/welcome_center.jpg')] bg-cover bg-no-repeat bg-center mb-14 col-start-1 col-end-1 row-start-1 row-end-3"></div>
+          <div className="flex w-full max-h-[33vh] h-screen bg-[url('./backgrounds/welcome_center.jpg')] bg-cover bg-no-repeat bg-center mb-14 col-start-1 col-end-1 row-start-1 row-end-3"></div>
           <Link
             to="home"
             className="bg-white self-end ml-auto py-4 px-[65px] col-start-1 col-end-1 row-start-1 row-end-4 mb-[15px] text-normal rounded-l-2xl"
