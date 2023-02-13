@@ -42,12 +42,12 @@ module.exports = {
         ],
       },
       colors: {
-        red: {
-          700: "#ff0000",
+        pinkish: {
+          700: "#f4a88e",
         },
-      },
-      width: {
-        "730px": "730px",
+        gray: {
+          700: "#e4e4e4",
+        },
       },
     },
   },

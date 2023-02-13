@@ -25,3 +25,13 @@ https://reactrouter.com/en/main
 https://tailwindcss.com/
 
 - Easy setup of default rules, useful for themes, makes development faster by having CSS rules be applied either directly where needed or through tailwind.config
+
+# React icons
+
+https://www.npmjs.com/package/react-icons
+
+- For easily using icons in the project
+- Has wide support for icons
+- Has large userbase
+- Is easy to use
+- Is customizable
