@@ -1,16 +1,9 @@
-import { HiMenuAlt3 } from "react-icons/hi";
-import { IoTriangle } from "react-icons/io5";
 import Carousel from "../templates/Carousel";
 import ClassCard from "../templates/ClassCard";
 
 const Home = () => {
   return (
     <>
-      <div className="flex place-content-between mt-4 mb-4 mx-4">
-        <IoTriangle size="30px" className="mt-8 text-customGray" />
-        <h1 className="text-normal">Popular Classes</h1>
-        <HiMenuAlt3 size="30px" className="mt-8 text-customGray" />
-      </div>
       <section className="mx-4">
         <div className="grid">
           <img
