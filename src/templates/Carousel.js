@@ -16,14 +16,10 @@ const Carousel = ({ children, setPlaylistIndex }) => {
     slidesToScroll: 1,
     variableWidth: true,
   };
-  /* function swipeHandler(i) {
-    setPlaylistIndex(i);
-  } */
+
   return (
     <div className="max-w-[375px]">
-      <Slider {...settings} /*  afterChange={swipeHandler} */>
-        {children}
-      </Slider>
+      <Slider {...settings}>{children}</Slider>
     </div>
   );
 };
