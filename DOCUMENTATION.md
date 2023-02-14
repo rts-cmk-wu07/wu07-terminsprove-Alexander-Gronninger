@@ -35,3 +35,9 @@ https://www.npmjs.com/package/react-icons
 - Has large userbase
 - Is easy to use
 - Is customizable
+
+# React Slick
+
+https://www.npmjs.com/package/react-slick
+
+- Easy to implement since I've set it up in a previous project

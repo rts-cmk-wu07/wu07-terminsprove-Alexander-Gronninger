@@ -42,12 +42,8 @@ module.exports = {
         ],
       },
       colors: {
-        pinkish: {
-          700: "#f4a88e",
-        },
-        gray: {
-          700: "#e4e4e4",
-        },
+        pinkish: "#f4a88e",
+        customGray: "#e4e4e4",
       },
     },
   },
