@@ -11,7 +11,7 @@ const Home = () => {
         <h1 className="text-normal">Popular Classes</h1>
         <HiMenuAlt3 size="30px" className="mt-8 text-customGray" />
       </div>
-      <section className="mx-4">
+      <section className="mx-4 mb-8">
         <div className="grid">
           <img
             src="https://picsum.photos/200"
