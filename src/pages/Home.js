@@ -38,7 +38,6 @@ const Home = () => {
           <h2 className="text-normal mt-2">Classes for you</h2>
           <Carousel>
             {classList?.map((classObject, i) => {
-              console.log(classObject);
               return (
                 <ClassCard
                   image={classObject?.asset?.url}
