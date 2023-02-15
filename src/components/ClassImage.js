@@ -1,11 +1,13 @@
-const ClassImage = ({ image, optionalCss }) => {
+const ClassImage = ({ image, imageAlt, optionalCss }) => {
   return (
     <>
-      <img
-        src={image}
-        alt=""
-        className={"rounded-3xl w-[150px] h-[150px]" + optionalCss}
-      />
+      <div className="h-[150px] w-[150px] rounded-3xl overflow-hidden">
+        <img
+          src={image}
+          alt={imageAlt}
+          className={"origin-top scale-150 " + optionalCss}
+        />
+      </div>
     </>
   );
 };
