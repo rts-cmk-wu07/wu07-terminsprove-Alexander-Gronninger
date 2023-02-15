@@ -16,7 +16,7 @@ const ClassDetails = () => {
             <h1 className="text-white text-big col-start-1 col-end-2 max-w-[60vw] truncate whitespace-normal">
               Lorem Ipsumsssssssss
             </h1>
-            <div className=" col-start-1 col-end-2">
+            <div className="mt-2 col-start-1 col-end-2">
               <Rating />
             </div>
             <button className="px-4 col-start-2 col-end-3 row-start-1 row-end-3 bg-white rounded-l-2xl w-full h-16 text-normal self-end mb-4">
