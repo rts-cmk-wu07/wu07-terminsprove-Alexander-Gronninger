@@ -42,12 +42,8 @@ module.exports = {
         ],
       },
       colors: {
-        red: {
-          700: "#ff0000",
-        },
-      },
-      width: {
-        "730px": "730px",
+        pinkish: "#f4a88e",
+        customGray: "#e4e4e4",
       },
     },
   },
