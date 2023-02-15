@@ -4,6 +4,7 @@ import { IoTriangle } from "react-icons/io5";
 import { Outlet, useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { BsPlus } from "react-icons/bs";
+import LinkBack from "../components/LinkBack";
 
 const Header = () => {
   let location = useLocation();
@@ -42,13 +43,7 @@ const Header = () => {
         {location.pathname === "/home" ? (
           <IoTriangle size="30px" className="mt-8 text-customGray" />
         ) : (
-          <Link to="/home" className="flex mt-8">
-            <IoTriangle
-              size="12px"
-              className="text-pinkish rotate-[-90deg] mr-2 self-center"
-            />
-            <p className="text-pinkish">Back</p>
-          </Link>
+          <LinkBack />
         )}
         <h1 className="text-normal">Popular Classes</h1>
         <button onClick={() => setShowBurgerMenu(!showBurgerMenu)}>
