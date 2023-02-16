@@ -2,7 +2,6 @@ import { useLocation } from "react-router";
 
 const ClassTime = ({ classContent }) => {
   const location = useLocation();
-  console.log(location.pathname);
 
   return (
     <section
@@ -22,9 +21,12 @@ const ClassTime = ({ classContent }) => {
             : "text-normal mt-4 "
         }
       >
-        {classContent && location.pathname !== "/schedule"
-          ? classContent.classDescription
-          : classContent.className}
+        {classContent &&
+          location.pathname !== "/schedule" &&
+          classContent.classDescription}
+        {classContent &&
+          location.pathname === "/schedule" &&
+          classContent.className}
       </p>
     </section>
   );
