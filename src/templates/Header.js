@@ -15,19 +15,39 @@ const Header = () => {
     setShowBurgerMenu(false);
   }, [location]);
 
+  const [pageTitle, setPageTitle] = useState(null);
+  useEffect(() => {
+    if (location.pathname === "/search") {
+      setPageTitle("Search");
+    } else if (location.pathname === "/schedule") {
+      setPageTitle("My Schedule");
+    }
+  }, [location]);
+
   return (
     <>
       {showBurgerMenu && <Nav setShowBurgerMenu={setShowBurgerMenu} />}
-      <header className="flex place-content-between mt-4 mb-4 mx-4">
-        {location.pathname === "/home" ? (
-          <IoTriangle size="30px" className="mt-8 text-customGray" />
+      <header className="mt-4 mb-4 mx-4">
+        <div className="flex place-content-between">
+          {location.pathname === "/home" ? (
+            <IoTriangle size="30px" className="mt-8 text-customGray" />
+          ) : (
+            <LinkBack />
+          )}
+          {location.pathname === "/home" ? (
+            <h1 className="text-normal">Popular Classes</h1>
+          ) : (
+            <></>
+          )}
+          <button onClick={() => setShowBurgerMenu(!showBurgerMenu)}>
+            <HiMenuAlt3 size="30px" className="mt-8 text-customGray" />
+          </button>
+        </div>
+        {location.pathname !== "/home" ? (
+          <h1 className="text-big mt-4  ">{pageTitle}</h1>
         ) : (
-          <LinkBack />
+          <></>
         )}
-        <h1 className="text-normal">Popular Classes</h1>
-        <button onClick={() => setShowBurgerMenu(!showBurgerMenu)}>
-          <HiMenuAlt3 size="30px" className="mt-8 text-customGray" />
-        </button>
       </header>
       <Outlet />
     </>

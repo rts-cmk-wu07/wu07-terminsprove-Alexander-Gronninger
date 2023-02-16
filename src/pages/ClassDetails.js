@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import ClassTime from "../components/ClassTime";
 import LinkBack from "../components/LinkBack";
 import Rating from "../components/Rating";
 import Trainer from "../components/Trainer";
@@ -40,16 +41,7 @@ const ClassDetails = () => {
             </div>
           </div>
         </section>
-        <section className="mx-6 mt-4 mb-12">
-          <h2 className="text-normal">Schedule</h2>
-          <div className="flex text-small justify-between">
-            <p>{classContent && classContent.classDay}</p>
-            <p>{classContent && classContent.classTime}</p>
-          </div>
-          <p className="text-small mt-6">
-            {classContent && classContent.classDescription}
-          </p>
-        </section>
+        <ClassTime classContent={classContent} />
         <div className="mx-6 mt-12 mb-24">
           <Trainer trainerId={classContent && classContent.trainerId} />
         </div>

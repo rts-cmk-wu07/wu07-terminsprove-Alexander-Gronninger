@@ -35,9 +35,11 @@ const Nav = ({ setShowBurgerMenu }) => {
         <Link className={linkStyle} to="/search">
           Search
         </Link>
-        <Link className={linkStyle} to="/schedule">
-          My Schedule
-        </Link>
+        {user && (
+          <Link className={linkStyle} to="/schedule">
+            My Schedule
+          </Link>
+        )}
         {(user && (
           <button className={linkStyle} onClick={handleLogOut}>
             Log out
