@@ -1,13 +1,16 @@
+import { useContext } from "react";
 import LinkBack from "../components/LinkBack";
 import Rating from "../components/Rating";
 import Trainer from "../components/Trainer";
+import UserContext from "../context/UserContext";
 import useFetchClass from "../hooks/useFetchClass";
 
 const ClassDetails = () => {
   const { content: classContent } = useFetchClass();
 
   const url = classContent && classContent?.asset?.url;
-  console.log(url);
+
+  const { user, setUser } = useContext(UserContext);
 
   return (
     <>

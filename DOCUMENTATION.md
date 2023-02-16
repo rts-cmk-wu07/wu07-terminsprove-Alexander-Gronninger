@@ -41,3 +41,21 @@ https://www.npmjs.com/package/react-icons
 https://www.npmjs.com/package/react-slick
 
 - Easy to implement since I've set it up in a previous project
+
+# React-hook-form
+
+https://www.npmjs.com/package/react-hook-form
+
+- Better form performance, required for adaptation of code from earlier project
+
+# Yup
+
+https://www.npmjs.com/package/yup
+
+- Schema validation, required for adaptation of code from earlier project
+
+# @hookform/resolvers
+
+https://www.npmjs.com/package/@hookform/resolvers
+
+- make react-hook-form and yup work together
