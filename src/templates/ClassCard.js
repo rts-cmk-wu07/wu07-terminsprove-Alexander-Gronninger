@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import ClassImage from "../components/ClassImage";
 import Rating from "../components/Rating";
 
-const ClassCard = ({ image, title, rating, classId }) => {
+const ClassCard = ({ image, title, classId }) => {
   return (
     <>
       <div className="mr-4">
@@ -12,7 +12,7 @@ const ClassCard = ({ image, title, rating, classId }) => {
             {title}
           </h3>
         </Link>
-        <Rating rating={rating} />
+        <Rating classId={classId} />
       </div>
     </>
   );

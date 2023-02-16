@@ -1,6 +1,7 @@
 function FindAverageRating(ratingData) {
   let ratingArray = [];
-  ratingData.map((ratingObject) => {
+  ratingData.map((ratingObject, i) => {
+    console.log(ratingObject);
     return (ratingArray = [...ratingArray, ratingObject.rating]);
   });
 

@@ -1,29 +1,10 @@
 import FindAverageRating from "../functions/FindAverageRating";
+import useFetchRating from "../hooks/useFetchRating";
 
-const Rating = ({ ratingData }) => {
-  ratingData = [
-    {
-      id: 1,
-      classId: 2,
-      userId: 1,
-      rating: 5,
-    },
-    {
-      id: 2,
-      classId: 2,
-      userId: 4,
-      rating: 2,
-    },
-    {
-      id: 3,
-      classId: 2,
-      userId: 2,
-      rating: 4,
-    },
-  ];
+const Rating = ({ classId }) => {
+  const { content: RatingData } = useFetchRating({ id: classId });
 
-  let finalRating = FindAverageRating(ratingData);
-  finalRating = false;
+  let finalRating = (RatingData[0] && FindAverageRating(RatingData)) || 0;
 
   let squareStyle = "w-5 h-5 ";
   return (
