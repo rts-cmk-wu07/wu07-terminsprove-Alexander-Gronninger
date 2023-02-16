@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import RatingModal from "./components/RatingModal";
 import ContextProvider from "./context/ContextProvider";
 import ClassDetails from "./pages/ClassDetails";
 import Home from "./pages/Home";
@@ -10,6 +11,7 @@ const App = () => {
   return (
     <>
       <ContextProvider>
+        <RatingModal />
         <Routes>
           <Route path="/" element={<Welcome />} key="Welcome" />
           <Route path="/*" element={<Header />} key="Header">

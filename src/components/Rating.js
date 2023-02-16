@@ -1,16 +1,25 @@
+import { useContext } from "react";
+import UserRatingContext from "../context/UserRatingContext";
 import FindAverageRating from "../functions/FindAverageRating";
 import useFetchRating from "../hooks/useFetchRating";
 
 const Rating = ({ classId }) => {
+  const { showRatingModal, setShowRatingModal } = useContext(UserRatingContext);
   const { content: RatingData } = useFetchRating({ id: classId });
-
   let finalRating =
     (RatingData && RatingData[0] && FindAverageRating(RatingData)) || 0;
 
   let squareStyle = "w-5 h-5 ";
+
+  function clickRatingHandler() {
+    if (true) {
+      setShowRatingModal(true);
+    }
+  }
+
   return (
     <>
-      <div className="flex gap-[1px]">
+      <button onClick={() => clickRatingHandler()} className="flex gap-[1px]">
         {/* _ is dummy parameter, this map does not use currentValue parameter */}
         {(finalRating &&
           [...Array(5)].map((_, index) => (
@@ -27,7 +36,7 @@ const Rating = ({ classId }) => {
             No rating found
           </p>
         )}
-      </div>
+      </button>
     </>
   );
 };

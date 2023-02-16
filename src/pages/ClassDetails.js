@@ -5,7 +5,6 @@ import Rating from "../components/Rating";
 import Trainer from "../components/Trainer";
 import UserContext from "../context/UserContext";
 import useFetchClass from "../hooks/useFetchClass";
-import useFetchClassSignUp from "../hooks/useFetchClassSignUp";
 
 const ClassDetails = () => {
   const { content: classContent } = useFetchClass();
