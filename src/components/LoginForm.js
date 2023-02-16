@@ -13,7 +13,6 @@ const schema = yup
 
 const LoginForm = ({ setShowLogin }) => {
   const { user, setUser } = useContext(UserContext);
-  console.log(user);
 
   const {
     register,
@@ -41,7 +40,6 @@ const LoginForm = ({ setShowLogin }) => {
         }
       })
       .then((data) => {
-        console.log(data);
         setUser(data);
         setShowLogin(false);
       })
