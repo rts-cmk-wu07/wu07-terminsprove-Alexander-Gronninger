@@ -53,7 +53,10 @@ const Search = () => {
           </>
         )}
         {!searchResults[0] ? (
-          <p className="text-normal text-center mt-8">No results found...</p>
+          <p className="text-normal text-center mt-8">
+            Your search did not give any results. Try to search for something
+            else.
+          </p>
         ) : (
           <div className="flex gap-2 flex-col mt-4">
             {searchResults.map((searchResult, i) => {
