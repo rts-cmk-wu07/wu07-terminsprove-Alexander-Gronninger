@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useLocation } from "react-router";
 import UserContext from "../context/UserContext";
 import UserRatingContext from "../context/UserRatingContext";
 import FindAverageRating from "../functions/FindAverageRating";
@@ -14,10 +15,15 @@ const Rating = ({ classId }) => {
 
   let squareStyle = "w-5 h-5 ";
 
+  // need location since I initially made it so you can rate anywhere
+  // but you should only be allowed to rate on the class details page
+  const location = useLocation();
   function clickRatingHandler() {
     if (user) {
-      setShowRatingModal(true);
-      setRatingId(classId);
+      if (location.pathname.includes("class")) {
+        setShowRatingModal(true);
+        setRatingId(classId);
+      }
     }
   }
 

@@ -72,10 +72,10 @@ const ClassSignupButton = ({ classContent }) => {
           toast.error(
             "Cannot sign up for: " +
               classContent.className +
-              " - class day conflicts with your schedule",
+              " - class day conflicts with another class you've signed up for",
             {
               position: "top-center",
-              autoClose: 2500,
+              autoClose: 4500,
               hideProgressBar: false,
               closeOnClick: true,
               pauseOnHover: true,
