@@ -37,7 +37,6 @@ const Search = () => {
         <h2 className="text-normal mt-2 mb-8">Popular Trainers</h2>
         <div className="flex flex-col gap-4">
           {trainerList?.map((trainer, i) => {
-            console.log(trainer);
             return <Trainer trainerId={trainer.id} />;
           })}
         </div>
