@@ -16,6 +16,8 @@ const Search = () => {
 
   let searchResults = SearchQuery(searchTerm);
 
+  console.log(searchResults);
+
   return (
     <>
       <div className="mx-4">
@@ -29,7 +31,7 @@ const Search = () => {
         </form>
       </div>
       <section className="mx-4 mb-12">
-        {!searchTerm && (
+        {!searchTerm ? (
           <>
             <h2 className="text-normal mt-2 mb-8">Popular Classes</h2>
             <Carousel>
@@ -51,8 +53,7 @@ const Search = () => {
               })}
             </div>
           </>
-        )}
-        {!searchResults[0] ? (
+        ) : !searchResults[0] ? (
           <p className="text-normal text-center mt-8">
             Your search did not give any results. Try to search for something
             else.
