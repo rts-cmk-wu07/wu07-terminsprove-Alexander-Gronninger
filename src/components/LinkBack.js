@@ -6,7 +6,7 @@ const LinkBack = () => {
     <Link to="/home" className="flex mt-8">
       <IoTriangle
         size="12px"
-        className="text-pinkish rotate-[-90deg] mr-2 mt-2 self-center"
+        className="text-pinkish rotate-[-90deg] mr-2 self-center"
       />
       <p className="text-pinkish">Back</p>
     </Link>

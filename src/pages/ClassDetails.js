@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import ClassSignupButton from "../components/ClassSignupButton";
 import ClassTime from "../components/ClassTime";
 import LinkBack from "../components/LinkBack";
 import Rating from "../components/Rating";
@@ -11,9 +12,7 @@ const ClassDetails = () => {
 
   const url = classContent && classContent?.asset?.url;
 
-  const { user, setUser } = useContext(UserContext);
-
-  function handleSignUp() {}
+  const { user } = useContext(UserContext);
 
   return (
     <>
@@ -37,31 +36,7 @@ const ClassDetails = () => {
               <div className="mt-2 col-start-1 col-end-2">
                 <Rating />
               </div>
-              {user && (
-                <button
-                  onClick={() => {
-                    fetch(
-                      "http://localhost:4000/api/v1/users/" +
-                        user.userId +
-                        "/classes/" +
-                        classContent.id,
-                      {
-                        method: "POST",
-                        headers: {
-                          "Content-Type": "application/json",
-                          Authorization: `Bearer ${user.token}`,
-                        },
-                      }
-                    )
-                      .then((response) => response.json())
-                      .then((response) => console.log(response))
-                      .catch((err) => console.error(err));
-                  }}
-                  className="px-4 col-start-2 col-end-3 row-start-1 row-end-3 bg-white rounded-l-2xl w-full h-16 text-normal self-end mb-4"
-                >
-                  Sign up
-                </button>
-              )}
+              {user && <ClassSignupButton classContent={classContent} />}
             </div>
           </div>
         </section>

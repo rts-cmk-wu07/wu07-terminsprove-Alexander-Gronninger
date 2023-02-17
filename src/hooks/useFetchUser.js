@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useFetchSchedule = ({ id, token }) => {
+const useFetchUser = ({ id, token }) => {
   const [content, setContent] = useState();
 
   useEffect(() => {
@@ -20,4 +20,4 @@ const useFetchSchedule = ({ id, token }) => {
   return { content };
 };
 
-export default useFetchSchedule;
+export default useFetchUser;

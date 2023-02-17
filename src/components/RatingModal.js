@@ -1,14 +1,23 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router";
 import UserContext from "../context/UserContext";
 import UserRatingContext from "../context/UserRatingContext";
 
 const RatingModal = ({ classId }) => {
-  const { user, setUser } = useContext(UserContext);
-  const { showRatingModal, setShowRatingModal } = useContext(UserRatingContext);
+  const { user } = useContext(UserContext);
+  const { showRatingModal, setShowRatingModal, ratingId } =
+    useContext(UserRatingContext);
 
   let squareStyle = "w-5 h-5 ";
 
   const [selectedRating, setSelectedRating] = useState(0);
+
+  let navigate = useNavigate();
+  let location = useLocation();
+
+  useEffect(() => {
+    setSelectedRating(0);
+  }, [showRatingModal]);
 
   return (
     <>
@@ -41,21 +50,27 @@ const RatingModal = ({ classId }) => {
             <button
               onClick={() => {
                 fetch(
-                  "http://localhost:4000/api/v1/classes/" + 1 + "/ratings",
+                  "http://localhost:4000/api/v1/classes/" +
+                    ratingId +
+                    "/ratings",
                   {
                     method: "POST",
                     headers: {
                       "Content-Type": "application/json",
                       Authorization: `Bearer ${user.token}`,
                     },
-                    body: {
-                      userId: JSON.stringify(user.id),
-                      rating: JSON.stringify(selectedRating),
-                    },
+                    body: JSON.stringify({
+                      userId: user.userId,
+                      rating: selectedRating,
+                    }),
                   }
                 )
                   .then((response) => response.json())
-                  .then((response) => console.log(response))
+                  .then((response) => {
+                    console.log(response);
+                    setShowRatingModal(false);
+                    navigate(location.pathname);
+                  })
                   .catch((err) => console.error(err));
               }}
               className="text-small pt-4 w-fit"

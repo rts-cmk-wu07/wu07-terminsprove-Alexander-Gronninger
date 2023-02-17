@@ -1,10 +1,13 @@
 import { useContext } from "react";
+import UserContext from "../context/UserContext";
 import UserRatingContext from "../context/UserRatingContext";
 import FindAverageRating from "../functions/FindAverageRating";
 import useFetchRating from "../hooks/useFetchRating";
 
 const Rating = ({ classId }) => {
-  const { showRatingModal, setShowRatingModal } = useContext(UserRatingContext);
+  const { user } = useContext(UserContext);
+  const { setShowRatingModal, setRatingId } = useContext(UserRatingContext);
+
   const { content: RatingData } = useFetchRating({ id: classId });
   let finalRating =
     (RatingData && RatingData[0] && FindAverageRating(RatingData)) || 0;
@@ -12,8 +15,9 @@ const Rating = ({ classId }) => {
   let squareStyle = "w-5 h-5 ";
 
   function clickRatingHandler() {
-    if (true) {
+    if (user) {
       setShowRatingModal(true);
+      setRatingId(classId);
     }
   }
 

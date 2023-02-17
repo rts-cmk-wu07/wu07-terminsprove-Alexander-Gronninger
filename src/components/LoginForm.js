@@ -12,7 +12,7 @@ const schema = yup
   .required();
 
 const LoginForm = ({ setShowLogin }) => {
-  const { user, setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
 
   const {
     register,
@@ -64,7 +64,7 @@ const LoginForm = ({ setShowLogin }) => {
             setShowLogin(false);
           }
         }}
-        className="flex flex-col item-center justify-items-center fixed z-50 w-full h-full place-content-center place-items-center"
+        className="flex flex-col item-center justify-items-center fixed z-50 w-full h-full place-content-center place-items-center bg-[#00000050]"
       >
         <form
           className="max-w-[50vh] h-fit flex flex-col mx-auto bg-white gap-4 py-12 px-8 rounded-2xl border-2 border-customGray drop-shadow-2xl z-60"

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import useFetchClasses from "../hooks/useFetchClasses";
 import Carousel from "../templates/Carousel";
 import ClassCard from "../templates/ClassCard";
@@ -8,12 +8,12 @@ const Home = () => {
 
   const selectRandomIndex = Math.floor(Math.random() * classList?.length);
 
+  //Resizes main image height when screen width changes
   const [height, setHeight] = useState("auto");
-
-  function handleImageLoad(event) {
-    const width = event.target.width;
-    setHeight(`${width}px`);
-  }
+  const imageRef = useRef();
+  window.addEventListener("resize", () => {
+    imageRef && setHeight(`${imageRef?.current?.width}px`);
+  });
 
   return (
     <>
@@ -27,7 +27,7 @@ const Home = () => {
               src={classList && classList[selectRandomIndex]?.asset?.url}
               alt={classList && classList[selectRandomIndex]?.className}
               className="origin-top scale-150 w-full h-auto"
-              onLoad={handleImageLoad}
+              ref={imageRef}
             />
           </div>
           <h2 className="z-10 row-start-1 row-end-2 col-start-1 col-end-2 text-white text-big self-end ml-8 mb-16 w-[75vw]">
