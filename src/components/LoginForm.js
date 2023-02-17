@@ -3,6 +3,8 @@ import UserContext from "../context/UserContext";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const schema = yup
   .object({
@@ -22,6 +24,15 @@ const LoginForm = ({ setShowLogin }) => {
   } = useForm({ mode: "onBlur", resolver: yupResolver(schema) });
 
   const onSubmit = (data) => {
+    const id = toast.loading("Logging in...", {
+      position: "top-center",
+      autoClose: 2500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
     fetch("http://localhost:4000/auth/token", {
       method: "POST",
       headers: {
@@ -40,17 +51,29 @@ const LoginForm = ({ setShowLogin }) => {
         }
       })
       .then((data) => {
+        toast.update(id, {
+          render: "Logged in successfully",
+          type: "success",
+          isLoading: false,
+          autoClose: 2500,
+        });
         setUser(data);
         setShowLogin(false);
       })
       .catch((err) => {
+        toast.update(id, {
+          render: "Log in failed, incorrect username or password",
+          type: "error",
+          isLoading: false,
+          autoClose: 2500,
+        });
         setError("username", {
           type: "custom",
-          message: "Ugyldige login oplysninger. Prøv igen...",
+          message: "Incorrect username or password. Try again...",
         });
         setError("password", {
           type: "custom",
-          message: "Ugyldige login oplysninger. Prøv igen...",
+          message: "Incorrect username or password. Try again...",
         });
       });
   };
@@ -83,9 +106,8 @@ const LoginForm = ({ setShowLogin }) => {
             placeholder="password"
             {...register("password")}
           />
-          <div className="h-8">
+          <div className="h-8 max-w-[200px] text-center">
             <p>{errors.username?.message}</p>
-            <p>{errors.password?.message}</p>
           </div>
           <input
             className="border-2 border-customGray rounded-xl w-fit m-auto px-6 py-2 mt-12"

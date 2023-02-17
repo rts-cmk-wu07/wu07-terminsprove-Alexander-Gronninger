@@ -13,11 +13,14 @@ const ClassSignupButton = ({ classContent }) => {
     token: user?.token,
   });
   const currentTrainingDay = classContent?.classDay;
-  const [signUpConflict, setSignupConflict] = useState(
-    ScheduleData?.classes.some((obj) => obj?.classDay === currentTrainingDay)
-  );
+  const [signUpConflict, setSignupConflict] = useState(null);
 
-  console.log(signUpConflict);
+  useEffect(() => {
+    const checkScheduleConflict = ScheduleData?.classes.some(
+      (obj) => obj?.classDay === currentTrainingDay
+    );
+    setSignupConflict(checkScheduleConflict);
+  }, [ScheduleData]);
 
   // Check if signed up
   const checkIsSignedUp = classContent?.users.some(
@@ -51,7 +54,7 @@ const ClassSignupButton = ({ classContent }) => {
           )
             .then((response) => response.json())
             .then((response) => {
-              toast.info("Signed up for class: " + classContent.className, {
+              toast.success("Signed up for class: " + classContent.className, {
                 position: "top-center",
                 autoClose: 2500,
                 hideProgressBar: false,
@@ -66,7 +69,20 @@ const ClassSignupButton = ({ classContent }) => {
             })
             .catch((err) => console.error(err))
         : // Signup conflicts, add user feedback
-          console.log("cannot sign up, conflict")
+          toast.error(
+            "Cannot sign up for: " +
+              classContent.className +
+              " - class day conflicts with your schedule",
+            {
+              position: "top-center",
+              autoClose: 2500,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            }
+          )
       : // Is signed up
         fetch(
           "http://localhost:4000/api/v1/users/" +
@@ -83,7 +99,8 @@ const ClassSignupButton = ({ classContent }) => {
         )
           .then((response) => response.json())
           .then((response) => {
-            toast.info("Left class: " + classContent.className, {
+            // Should be put here but leaving class doesnt get a response it gets an error
+            /* toast.error("Left class: " + classContent.className, {
               position: "top-center",
               autoClose: 2500,
               hideProgressBar: false,
@@ -93,12 +110,12 @@ const ClassSignupButton = ({ classContent }) => {
               progress: undefined,
             });
             setSignupConflict(false);
-            setIsSignedUp(false);
+            setIsSignedUp(false); */
             console.log(response);
           })
           .catch((err) => {
             /* API gives syntaxError but it seems to be working fine*/
-            toast.info("Left class: " + classContent.className, {
+            toast.warn("Left class: " + classContent.className, {
               position: "top-center",
               autoClose: 2500,
               hideProgressBar: false,

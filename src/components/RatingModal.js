@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import UserContext from "../context/UserContext";
 import UserRatingContext from "../context/UserRatingContext";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const RatingModal = ({ classId }) => {
   const { user } = useContext(UserContext);
@@ -49,6 +51,15 @@ const RatingModal = ({ classId }) => {
             </div>
             <button
               onClick={() => {
+                const id = toast.loading("Submitting rating...", {
+                  position: "top-center",
+                  autoClose: 2500,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                });
                 fetch(
                   "http://localhost:4000/api/v1/classes/" +
                     ratingId +
@@ -67,11 +78,26 @@ const RatingModal = ({ classId }) => {
                 )
                   .then((response) => response.json())
                   .then((response) => {
+                    toast.update(id, {
+                      render: "Successfully submitted rating",
+                      type: "success",
+                      isLoading: false,
+                      autoClose: 2500,
+                    });
                     console.log(response);
                     setShowRatingModal(false);
                     navigate(location.pathname);
                   })
-                  .catch((err) => console.error(err));
+                  .catch((err) => {
+                    toast.update(id, {
+                      render:
+                        "Could not submit rating, this could be caused by the server being down, or that you've already rated this class and the API doesn't support updating(call manager to complain)",
+                      type: "error",
+                      isLoading: false,
+                      autoClose: 10000,
+                    });
+                    console.error(err);
+                  });
               }}
               className="text-small pt-4 w-fit"
             >
