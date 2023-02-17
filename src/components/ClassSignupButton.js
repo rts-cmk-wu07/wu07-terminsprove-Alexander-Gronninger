@@ -20,7 +20,7 @@ const ClassSignupButton = ({ classContent }) => {
       (obj) => obj?.classDay === currentTrainingDay
     );
     setSignupConflict(checkScheduleConflict);
-  }, [ScheduleData]);
+  }, [ScheduleData, currentTrainingDay]);
 
   // Check if signed up
   const checkIsSignedUp = classContent?.users.some(
