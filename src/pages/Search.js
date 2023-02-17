@@ -57,7 +57,6 @@ const Search = () => {
         ) : (
           <div className="flex gap-2 flex-col mt-4">
             {searchResults.map((searchResult, i) => {
-              console.log(searchResult);
               return <SearchCard data={searchResult} key={i} />;
             })}
           </div>

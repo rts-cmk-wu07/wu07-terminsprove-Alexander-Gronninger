@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import ClassImage from "./ClassImage";
 
 const SearchCard = ({ data }) => {
-  console.log(data);
   return (
     <>
       <Link to={data.className ? "../class/" + data.id : ""}>
