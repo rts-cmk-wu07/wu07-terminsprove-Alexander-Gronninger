@@ -44,6 +44,7 @@ const ClassDetails = () => {
           <ClassTime classContent={classContent} />
         </div>
         <div className="mx-6 mt-12 mb-24">
+          <p className="text-normal">Trainer</p>
           <Trainer trainerId={classContent && classContent.trainerId} />
         </div>
       </div>

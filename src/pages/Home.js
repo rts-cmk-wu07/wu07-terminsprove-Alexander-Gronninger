@@ -35,7 +35,7 @@ const Home = () => {
           </h2>
         </div>
         <div>
-          <h2 className="text-normal mt-2">Classes for you</h2>
+          <h2 className="text-normal mt-2 mb-8">Classes for you</h2>
           <Carousel>
             {classList?.map((classObject, i) => {
               return (
