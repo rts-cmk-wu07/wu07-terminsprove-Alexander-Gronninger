@@ -5,7 +5,7 @@ const ClassImage = ({ image, imageAlt, optionalCss }) => {
         <img
           src={image}
           alt={imageAlt}
-          className={"origin-top scale-[2] " + optionalCss}
+          className={optionalCss + " origin-top scale-[1.75] "}
         />
       </div>
     </>
