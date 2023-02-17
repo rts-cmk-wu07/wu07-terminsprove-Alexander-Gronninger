@@ -27,6 +27,7 @@ const Home = () => {
               src={classList && classList[selectRandomIndex]?.asset?.url}
               alt={classList && classList[selectRandomIndex]?.className}
               className="origin-top scale-150 w-full h-auto"
+              onLoad={() => setHeight(`${imageRef?.current?.width}px`)}
               ref={imageRef}
             />
           </div>
