@@ -1,4 +1,6 @@
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import RatingModal from "./components/RatingModal";
 import ContextProvider from "./context/ContextProvider";
 import ClassDetails from "./pages/ClassDetails";
@@ -11,6 +13,17 @@ import Header from "./templates/Header";
 const App = () => {
   return (
     <>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <ContextProvider>
         <RatingModal />
         <Routes>

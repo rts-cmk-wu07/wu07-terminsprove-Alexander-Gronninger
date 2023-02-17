@@ -59,3 +59,10 @@ https://www.npmjs.com/package/yup
 https://www.npmjs.com/package/@hookform/resolvers
 
 - make react-hook-form and yup work together
+
+# react toastify
+
+https://www.npmjs.com/package/react-toastify
+
+- package for small banners to appear on command, useful for user feedback
+- easy to use, have used before

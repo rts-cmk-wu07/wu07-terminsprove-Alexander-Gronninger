@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import UserContext from "../context/UserContext";
 import useFetchUser from "../hooks/useFetchUser";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ClassSignupButton = ({ classContent }) => {
   const { user } = useContext(UserContext);
@@ -11,9 +13,11 @@ const ClassSignupButton = ({ classContent }) => {
     token: user?.token,
   });
   const currentTrainingDay = classContent?.classDay;
-  const checkScheduleConflict = ScheduleData?.classes.some(
-    (obj) => obj?.classDay === currentTrainingDay
+  const [signUpConflict, setSignupConflict] = useState(
+    ScheduleData?.classes.some((obj) => obj?.classDay === currentTrainingDay)
   );
+
+  console.log(signUpConflict);
 
   // Check if signed up
   const checkIsSignedUp = classContent?.users.some(
@@ -31,7 +35,7 @@ const ClassSignupButton = ({ classContent }) => {
     // Isn't signed up
     !isSignedUp
       ? // Doesn't conflict with other signup
-        !checkScheduleConflict
+        !signUpConflict
         ? fetch(
             "http://localhost:4000/api/v1/users/" +
               user.userId +
@@ -47,6 +51,16 @@ const ClassSignupButton = ({ classContent }) => {
           )
             .then((response) => response.json())
             .then((response) => {
+              toast.info("Signed up for class: " + classContent.className, {
+                position: "top-center",
+                autoClose: 2500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+              });
+              setSignupConflict(true);
               setIsSignedUp(true);
               console.log(response);
             })
@@ -69,11 +83,31 @@ const ClassSignupButton = ({ classContent }) => {
         )
           .then((response) => response.json())
           .then((response) => {
+            toast.info("Left class: " + classContent.className, {
+              position: "top-center",
+              autoClose: 2500,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+            setSignupConflict(false);
             setIsSignedUp(false);
             console.log(response);
           })
           .catch((err) => {
             /* API gives syntaxError but it seems to be working fine*/
+            toast.info("Left class: " + classContent.className, {
+              position: "top-center",
+              autoClose: 2500,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+            setSignupConflict(false);
             setIsSignedUp(false);
             console.error(err);
           });
